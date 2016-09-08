@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<title>Node Authentication</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+<div class="container">
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+	<div class="row">
+
+		<!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Show all hands after 7pm!</h3>
+
+                <% if (sevenOclock == true) { %>
+ 					<h2>Pro picks:</h2>
+					<table style="width:100%">
+					  <tr>
+					    <th></th>
+					    <th></th>
+					  </tr>
+					  <% for(var i=0; i<all.length; i++) {%>
+					  		<tr>
+					  			<td><%= all[i].name %></td>
+					  			<% for(var j=0; j<all[i].picks.length; j++) {%>
+					  				<td><%= all[i].picks[j] %></td>
+					  			<% } %>
+					  		</tr>
+					  <% } %>
+					 
+					  </table>
+                    
+                <% } %>
+
+            </div>
+        </div>
+
+	</div>
+
+</div>
+</body>
+</html>
+

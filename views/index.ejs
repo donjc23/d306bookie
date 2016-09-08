@@ -1,0 +1,62 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title>D306 bookie</title>
+<!--	<link rel="stylesheet" href="/css/bootstrap.min.css" >    -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">  <!--load bootstrap css -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+	<style>
+		body 		{ padding-top:80px; }
+	</style>
+</head>
+<body>
+<div class="container">
+
+	<div class="jumbotron text-center">
+		<h1><span class="fa fa-lock"></span> D306 bookie </h1>
+
+		<p>Login or Register with:</p>
+		<a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
+		<a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
+	</div>
+
+	<div class="row">
+		
+		<!-- LOCAL INFORMATION -->
+        <div class="col-sm-6 col-sm-offset-3">
+        	<p>Show all scores here! <br>
+			   Show everybodys picks after 7pm!!!
+			</p>
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Show all hands after 7pm!</h3>
+
+                <% if (sevenOclock == true) { %>
+ 					<h2>Pro picks:</h2>
+					<table style="width:100%">
+					  <tr>
+					    <th></th>
+					    <th></th>
+					  </tr>
+					  <% for(var i=0; i<all.length; i++) {%>
+					  		<tr>
+					  			<td><%= all[i].name %></td>
+					  			<td><%= all[i].score %></td>
+					  			<% for(var j=0; j<all[i].picks.length; j++) {%>
+					  				<td><%= all[i].picks[j] %></td>
+					  			<% } %>
+					  		</tr>
+					  <% } %>
+					 
+					  </table>
+                    
+                <% } %>
+
+            </div>
+        </div>
+
+	</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "d306bookie",
+  "version": "0.0.0",
+  "description": "book keeping",
+  "main": "server.js",
+  "repository": "",
+  "author": "donwang",
+  "dependencies": {
+    "morgan": "latest",
+    "express": "~3.2.4",
+    "cookie-parser": "latest",
+    "express-session": "latest",
+    "mongoose": "latest",
+    "ejs": "latest",
+    "body-parser": "latest",
+    "passport": "latest",
+    "passport-local": "latest",
+    "connect-flash": "latest",
+    "bcrypt": "latest"
+  }
+}

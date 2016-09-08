@@ -1,0 +1,88 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title>D306 bookie</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		body 		{ padding-top:80px; word-wrap:break-word; }
+	</style>
+</head>
+<body>
+<div class="container">
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
+		<p>You can only pick ONCE!! <br>
+		   Must be picked by 7pm!!!
+		</p>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+                <% if (name == 'donky') { %>
+                	<form action="/score" method="post">
+
+						<hr>
+					    <button type="submit" class="btn btn-warning btn-lg">cal score</button>
+					    
+				    </form>	
+				 <% } %>
+	</div>
+
+	<div class="row">
+
+		<!-- LOCAL INFORMATION -->
+        <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Date is <%= day %></h3>
+
+                <% if (picks.length==0 && sevenOclock==false) { %>
+                	<form action="/profile" method="post">
+
+	    				<h1>todays matches</h1>
+
+						<label class="radio-inline">
+				      	<input type="radio" name="match1" value="team1" >team1 Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match1" value="team2" checked="checked" >team2
+				    	</label>
+						<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match2" value="team1" >team1 Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match2" value="team2" checked="checked" >team2
+				    	</label>
+						<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match3" value="team1" >team1 Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match3" value="team2" checked="checked" >team2
+				    	</label>
+
+
+						<hr>
+					    <button type="submit" class="btn btn-warning btn-lg">Pick'em</button>
+					    
+				    </form>
+				 <% } else if(picks.length>0){ %>
+				 
+                	<h4> Your picks are </h4>
+                    <ul>
+						<% for(var i=0; i<picks.length; i++) {%>
+   							<li><%= picks[i] %></li>
+						<% } %>
+					</ul>
+				<% } else { %>
+             		<h4> Sorry buddy, you missed boat today! </h4>
+             <% } %>
+
+            </div>
+        </div>
+
+	</div>
+
+</div>
+</body>
+</html>
