@@ -1,24 +1,28 @@
 var User = require('./models/user');
+var moment = require('moment-timezone');
+moment.tz.setDefault("America/New_York");
 
 module.exports = function(app, passport){
 	app.get('/', function(req, res){
 		var all =[];
 		var today = new Date();
-		var tday = today.getDay();
-		var hour = today.getHours();
+		var tday = moment(today).day();
+		var hour = moment(today).hour();
+		// var tday = today.getDay();
+		// var hour = today.getHours();
 		var sevenOclock = false;
-		if(hour > 9)
+		if(hour > 19)
 			sevenOclock = true;
 		User.find(function(err, users){
 			if(err)
 				throw err;
 			for(var i=0; i<users.length; i++) {
-				//console.log('users[i] ' + users[i].score);
 				var stuff = {};
 				var yesterday = users[i].allPicks.pop();
 				if(yesterday){
 					var date = yesterday.dayPick;
-					var day = date.getDay();
+					var day = moment(date).day();
+					//var day = date.getDay();
 					stuff.name = users[i].local.username;
 					stuff.score = users[i].score;
 					if (day == tday){
@@ -63,16 +67,19 @@ module.exports = function(app, passport){
 		var user = req.user;
 		var picks = [];
 		var today = new Date();
-		var tday = today.getDay();
+		var tday = moment(today).day();
+		var hour = moment(today).hour();
+		//var tday = today.getDay();
 		var score = user.score;
-		var hour = today.getHours();
+		//var hour = today.getHours();
 		var sevenOclock = false;
-		if(hour > 29)
+		if(hour > 19)
 			sevenOclock = true;
 		var lastPick = user.allPicks.pop();
 		if(lastPick){
 			var date = lastPick.dayPick;
-			var day = date.getDay();
+			//var day = date.getDay();
+			var day = moment(date).day();
 			if (day == tday){
 				picks = lastPick.dayPicks;
 			}else{
@@ -86,7 +93,8 @@ module.exports = function(app, passport){
 		var result = ['team1','team2','team2'];
 		var size = result.length;
 		var today = new Date();
-		var tday = today.getDay();	
+		var tday = moment(today).day();
+		//var tday = today.getDay();	
 		User.find(function(err, users){
 			if(err)
 				throw err;
@@ -97,7 +105,8 @@ module.exports = function(app, passport){
 					var picks = yesterday.dayPicks;
 					var ysize = picks.length;
 					var date = yesterday.dayPick;
-					var day = date.getDay();
+					var day = moment(date).day();
+					//var day = date.getDay();
 					if (day < 6 ){
 						if(day == tday-1 && size == ysize){
 							for(var j=0; j<picks.length; j++) {

@@ -31,26 +31,29 @@
             <div class="well">
                 <h3><span class="fa fa-user"></span> Show all hands after 7pm!</h3>
 
-                <% if (sevenOclock == true) { %>
+                
  					<h2>Pro picks:</h2>
 					<table style="width:100%">
 					  <tr>
-					    <th></th>
-					    <th></th>
+					    <th>name</th>
+					    <th>score</th>
+					    <th>picks...</th>
 					  </tr>
 					  <% for(var i=0; i<all.length; i++) {%>
 					  		<tr>
 					  			<td><%= all[i].name %></td>
 					  			<td><%= all[i].score %></td>
-					  			<% for(var j=0; j<all[i].picks.length; j++) {%>
-					  				<td><%= all[i].picks[j] %></td>
+					  			<% if (sevenOclock == true) { %>
+						  			<% for(var j=0; j<all[i].picks.length; j++) {%>
+						  				<td><%= all[i].picks[j] %></td>
+						  			<% } %>
 					  			<% } %>
 					  		</tr>
 					  <% } %>
 					 
 					  </table>
                     
-                <% } %>
+                
 
             </div>
         </div>

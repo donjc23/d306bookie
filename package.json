@@ -6,16 +6,17 @@
   "repository": "",
   "author": "donwang",
   "dependencies": {
-    "morgan": "latest",
-    "express": "~3.2.4",
-    "cookie-parser": "latest",
-    "express-session": "latest",
-    "mongoose": "latest",
-    "ejs": "latest",
+    "bcrypt": "latest",
     "body-parser": "latest",
-    "passport": "latest",
-    "passport-local": "latest",
     "connect-flash": "latest",
-    "bcrypt": "latest"
+    "cookie-parser": "latest",
+    "ejs": "latest",
+    "express": "~3.2.4",
+    "express-session": "latest",
+    "moment-timezone": "^0.5.5",
+    "mongoose": "latest",
+    "morgan": "latest",
+    "passport": "latest",
+    "passport-local": "latest"
   }
 }

@@ -10,6 +10,10 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var flash = require('connect-flash');
+//var moment = require('moment');
+var moment = require('moment-timezone');
+moment.tz.setDefault("America/New_York");
+
 
 var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
@@ -35,3 +39,7 @@ require('./app/routes.js')(app, passport);
 app.listen(port);
 console.log('Server running on port: ' + port);
 
+// var today = new Date();
+// console.log('new Date()t: ' + today.getHours());
+// console.log('new Date()t: ' + moment(today).hour());
+// console.log('moment().hour: ' + moment().tz("America/New_York").format());
