@@ -11,7 +11,7 @@ module.exports = function(app, passport){
 		// var tday = today.getDay();
 		// var hour = today.getHours();
 		var sevenOclock = false;
-		if(hour > 19)
+		if(hour > 18)
 			sevenOclock = true;
 		User.find(function(err, users){
 			if(err)
@@ -73,7 +73,7 @@ module.exports = function(app, passport){
 		var score = user.score;
 		//var hour = today.getHours();
 		var sevenOclock = false;
-		if(hour > 19)
+		if(hour > 18)
 			sevenOclock = true;
 		var lastPick = user.allPicks.pop();
 		if(lastPick){
