@@ -66,6 +66,7 @@ module.exports = function(app, passport){
 	app.get('/profile', isLoggedIn, function(req, res){
 		var user = req.user;
 		var picks = [];
+		var lastPicks = [];
 		var today = new Date();
 		var tday = moment(today).day();
 		var hour = moment(today).hour();
@@ -84,13 +85,14 @@ module.exports = function(app, passport){
 				picks = lastPick.dayPicks;
 			}else{
 				picks = [];
+				lastPicks = lastPick.dayPicks;
 			}
 		}
-		res.render('profile.ejs', {picks: picks, day: today, name: user.local.username, sevenOclock: sevenOclock});
+		res.render('profile.ejs', {lastPicks : lastPicks, picks: picks, day: today, name: user.local.username, sevenOclock: sevenOclock});
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Raptors','Knicks','Bucks','Timberwolves','Rockets','Trail Blazers','Warriors'];
+		var result = ['Pelicans','Hornets','Knicks','Hawks'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();
@@ -155,7 +157,9 @@ module.exports = function(app, passport){
 		picks.push(req.body.match2);
 		picks.push(req.body.match3);
 		picks.push(req.body.match4);
-		
+		picks.push(req.body.match5);
+		picks.push(req.body.match6);
+		picks.push(req.body.match7);
 	
 		today.dayPick = new Date();
 		today.dayPicks = picks;
