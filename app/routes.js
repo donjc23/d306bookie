@@ -92,7 +92,7 @@ module.exports = function(app, passport){
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Wizards-2.5','76ers+6','Timberwolves-5.5','Spurs-5.5','Nuggets-2.5','Suns+2.5','Warriors-9.5'];
+		var result = ['Cavaliers-9.5','Trail Blazers-5.5','Warriors-9'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();

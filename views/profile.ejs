@@ -32,7 +32,7 @@
 		<div class="well">
         
 			<% if (lastPicks.length>0)  { %>
-				<h4> Your picks from last time : </h4>
+				<h4> Your picks from last night : </h4>
                     <ul>
 						<% for(var i=0; i<lastPicks.length; i++) {%>
    							<li><%= lastPicks[i] %></li>
@@ -56,24 +56,24 @@
 	    				<h1>todays matches</h1>
 
 						<label class="radio-inline">
-				      	<input type="radio" name="match1" value="Knicks" >Knicks Vs
+				      	<input type="radio" name="match1" value="Knicks+9.5" >Knicks Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match1" value="Cavaliers" checked="checked" >Cavaliers
+				      	<input type="radio" name="match1" value="Cavaliers-9.5" checked="checked" >Cavaliers-9.5
 				    	</label>
 						<hr>
 						<label class="radio-inline">
-				      	<input type="radio" name="match2" value="Jazz" >Jazz Vs
+				      	<input type="radio" name="match2" value="Jazz+5.5" >Jazz Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match2" value="Trail Blazers" checked="checked" >Trail Blazers
+				      	<input type="radio" name="match2" value="Trail Blazers-5.5" checked="checked" >Trail Blazers-5.5
 				    	</label>
 						<hr>
 						<label class="radio-inline">
-				      	<input type="radio" name="match3" value="Spurs" >Spurs Vs
+				      	<input type="radio" name="match3" value="Spurs+9" >Spurs Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match3" value="Warriors" checked="checked" >Warriors
+				      	<input type="radio" name="match3" value="Warriors-9" checked="checked" >Warriors-9
 				    	</label>
 				    	
 						<hr>
