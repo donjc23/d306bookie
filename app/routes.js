@@ -92,7 +92,7 @@ module.exports = function(app, passport){
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Cavaliers-9.5','Trail Blazers-5.5','Warriors-9'];
+		var result = ['Cavaliers-9.5','Trail Blazers-5.5','Spurs+9'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();
@@ -156,7 +156,14 @@ module.exports = function(app, passport){
 		picks.push(req.body.match1);
 		picks.push(req.body.match2);
 		picks.push(req.body.match3);
-		
+		picks.push(req.body.match4);
+		picks.push(req.body.match5);
+		picks.push(req.body.match6);
+		picks.push(req.body.match7);
+		picks.push(req.body.match8);
+		picks.push(req.body.match9);
+		picks.push(req.body.match10);
+	
 	
 		today.dayPick = new Date();
 		today.dayPicks = picks;
