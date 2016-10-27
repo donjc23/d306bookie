@@ -95,7 +95,7 @@ module.exports = function(app, passport){
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Heat+4','Pacers-6.5','Nets+13.5','Raptors-7.5','Hornets-2','Grizzlies-2','Nuggets+2.5','76ers+9','Kings+2.5','Lakers+6.5'];
+		var result = ['Hawks-3.5','Bulls+1.5','Spurs-8.5','Trail Blazers+2'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();
@@ -153,6 +153,24 @@ module.exports = function(app, passport){
 		res.redirect('/');
 	});
 
+	app.post('/fix', function(req, res){
+		var name = 'Mr.Gwu';
+		User.findOne({'local.username': name}, function(err, user){
+			if(err)
+				throw err;
+			if(user){
+				user.score = 7;
+				user.daywins = 7;
+				user.save(function(err){
+					if(err)
+						throw err;
+				})
+			}
+		})
+		res.redirect('/');
+	});
+	
+	
 	
 	app.post('/profile', isLoggedIn, function(req, res){
 		var user = req.user;
