@@ -25,6 +25,7 @@ module.exports = function(app, passport){
 					//var day = date.getDay();
 					stuff.name = users[i].local.username;
 					stuff.score = users[i].score;
+					stuff.daywins = users[i].daywins;
 					if (day == tday){
 						stuff.picks = yesterday.dayPicks;
 					}else{
@@ -33,6 +34,7 @@ module.exports = function(app, passport){
 				}else{
 					stuff.name = users[i].local.username;
 					stuff.score = users[i].score;
+					stuff.daywins = users[i].daywins;
 					stuff.picks = [];
 				}
 				all.push(stuff);
@@ -68,6 +70,7 @@ module.exports = function(app, passport){
 		var picks = [];
 		var lastPicks = [];
 		var today = new Date();
+		var estday = moment(today).format('ha z');
 		var tday = moment(today).day();
 		var hour = moment(today).hour();
 		//var tday = today.getDay();
@@ -88,11 +91,11 @@ module.exports = function(app, passport){
 				lastPicks = lastPick.dayPicks;
 			}
 		}
-		res.render('profile.ejs', {lastPicks : lastPicks, picks: picks, day: today, name: user.local.username, sevenOclock: sevenOclock});
+		res.render('profile.ejs', {lastPicks : lastPicks, picks: picks, day: estday, name: user.local.username, sevenOclock: sevenOclock});
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Cavaliers-9.5','Trail Blazers-5.5','Spurs+9'];
+		var result = ['Heat+4','Pacers-6.5','Nets+13.5','Raptors-7.5','Hornets-2','Grizzlies-2','Nuggets+2.5','76ers+9','Kings+2.5','Lakers+6.5'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();
@@ -120,6 +123,7 @@ module.exports = function(app, passport){
 							var newscore = users[i].score + todayscore;
 							//console.log('newscore ' + newscore);
 							users[i].score = newscore;
+							users[i].daywins = todayscore;
 							users[i].save(function(err){
 								if(err)
 									throw err;
@@ -134,6 +138,7 @@ module.exports = function(app, passport){
 							}
 							var newscore = users[i].score + todayscore;
 							users[i].score = newscore;
+							users[i].daywins = todayscore;
 							users[i].save(function(err){
 								if(err)
 									throw err;
@@ -157,12 +162,7 @@ module.exports = function(app, passport){
 		picks.push(req.body.match2);
 		picks.push(req.body.match3);
 		picks.push(req.body.match4);
-		picks.push(req.body.match5);
-		picks.push(req.body.match6);
-		picks.push(req.body.match7);
-		picks.push(req.body.match8);
-		picks.push(req.body.match9);
-		picks.push(req.body.match10);
+		
 	
 	
 		today.dayPick = new Date();
@@ -182,6 +182,8 @@ module.exports = function(app, passport){
 		res.redirect('/');
 	});
 
+	
+	
 };
 
 function isLoggedIn(req, res, next) {

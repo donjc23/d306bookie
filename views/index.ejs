@@ -30,6 +30,10 @@
 			   Cwu over VS Dong under!!! 
 			</p>
 			<hr>
+			<p>Boston Celtic wins eastern conference final <br>
+			   Jz says yes VS Cwu says no!!! <br>
+			</p>
+			<hr>
 			<p>Who will be the president in Nov 8th? <br>
 			   Trump VS Hilliary !!! <br>
 			   Alan 3.5 : Dong 1
@@ -41,6 +45,7 @@
     <div class="row">
     	       
            <div class="well">
+           		<h2>Day 2:</h2>
                 <h3><span class="fa fa-user"></span> Show all hands after 7pm!</h3>
 
                 
@@ -50,12 +55,14 @@
 					  <tr>
 					    <th>name</th>
 					    <th>score</th>
+					    <th># of wins</th>
 					    <th>picks...</th>
 					  </tr>
 					  <% for(var i=0; i<all.length; i++) {%>
 					  		<tr>
 					  			<td><%= all[i].name %></td>
 					  			<td><%= all[i].score %></td>
+					  			<td><%= all[i].daywins %></td>
 					  			<% if (sevenOclock == true) { %>
 						  			<% for(var j=0; j<all[i].picks.length; j++) {%>
 						  				<td><%= all[i].picks[j] %></td>
