@@ -68,7 +68,7 @@ module.exports = function(app, passport){
 	app.get('/profile', isLoggedIn, function(req, res){
 		var user = req.user;
 		var picks = [];
-		var lastPicks = [];
+		var allPicks = user.allPicks;
 		var today = new Date();
 		var estday = moment(today).format('ha z');
 		var tday = moment(today).day();
@@ -88,14 +88,13 @@ module.exports = function(app, passport){
 				picks = lastPick.dayPicks;
 			}else{
 				picks = [];
-				lastPicks = lastPick.dayPicks;
 			}
 		}
-		res.render('profile.ejs', {lastPicks : lastPicks, picks: picks, day: estday, name: user.local.username, sevenOclock: sevenOclock});
+		res.render('profile.ejs', {allPicks : allPicks, picks: picks, day: estday, name: user.local.username, sevenOclock: sevenOclock});
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Hawks-3.5','Bulls+1.5','Spurs-8.5','Trail Blazers+2'];
+		var result = ['Hawks-3.5','Bulls+1.5','Kings+8.5','Clippers-2'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();
@@ -180,7 +179,10 @@ module.exports = function(app, passport){
 		picks.push(req.body.match2);
 		picks.push(req.body.match3);
 		picks.push(req.body.match4);
-		
+		picks.push(req.body.match5);
+		picks.push(req.body.match6);
+		picks.push(req.body.match7);
+		picks.push(req.body.match8);
 	
 	
 		today.dayPick = new Date();

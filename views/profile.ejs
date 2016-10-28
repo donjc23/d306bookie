@@ -19,7 +19,7 @@
 		</p>
 		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
                 <% if (name == 'donky') { %>
-                	<form action="/fix" method="post">
+                	<form action="/score" method="post">
 
 						<hr>
 					    <button type="submit" class="btn btn-warning btn-lg">cal score</button>
@@ -32,13 +32,24 @@
 	<div class="row">
 		<div class="well">
         
-			<% if (lastPicks.length>0)  { %>
-				<h4> Your picks from last night : </h4>
-                    <ul>
-						<% for(var i=0; i<lastPicks.length; i++) {%>
-   							<li><%= lastPicks[i] %></li>
-						<% } %>
-					</ul>
+			<% if (allPicks.length>0)  { %>
+				<h4> all your picks from day 1 : </h4>
+                    <table class="table table-bordered">
+					  <tr>
+					    <th>day#</th>
+					    <th>picks...</th>
+					  </tr>
+					  <% for(var i=0; i<allPicks.length; i++) {%>
+					  		<tr>
+					  			<td><%= i+1 %></td>
+						  		<% for(var j=0; j<allPicks[i].dayPicks.length; j++) {%>
+						  			<td><%= allPicks[i].dayPicks[j] %></td>
+						  		<% } %>
+					  			
+					  		</tr>
+					  <% } %>
+					 
+					  </table>
 			<% } %>
          
     	</div>
@@ -57,33 +68,60 @@
 	    				<h1>todays matches</h1>
 
 						<label class="radio-inline">
-				      	<input type="radio" name="match1" value="Wizards+3.5" >Wizards Vs
+				      	<input type="radio" name="match1" value="Cavaliers-3" >Cavaliers Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match1" value="Hawks-3.5" checked="checked" >Hawks-3.5
+				      	<input type="radio" name="match1" value="Raptors+3" checked="checked" >Raptors+3
 				    	</label>
 						<hr>
 						<label class="radio-inline">
-				      	<input type="radio" name="match2" value="Celtics-1.5" >Celtics Vs
+				      	<input type="radio" name="match2" value="Pacers-6.5" >Pacers Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match2" value="Bulls+1.5" checked="checked" >Bulls+1.5
+				      	<input type="radio" name="match2" value="Nets+6.5" checked="checked" >Nets+6.5
 				    	</label>
 						<hr>
 						<label class="radio-inline">
-				      	<input type="radio" name="match3" value="Spurs-8.5" >Spurs Vs
+				      	<input type="radio" name="match3" value="Magic+3.5" >Magic Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match3" value="Kings+8.5" checked="checked" >Kings+8.5
+				      	<input type="radio" name="match3" value="Pistons-3.5" checked="checked" >Pistons-3.5
 				    	</label>
 				    	<hr>
 						<label class="radio-inline">
-				      	<input type="radio" name="match4" value="Clippers-2" >Clippers Vs
+				      	<input type="radio" name="match4" value="Suns+9.5" >Suns Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match4" value="Trail Blazers+2" checked="checked" >Trail Blazers+2
+				      	<input type="radio" name="match4" value="Thunder-9.5" checked="checked" >Thunder-9.5
 				    	</label>
-						
+						<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match5" value="Hornets+2" >Hornets Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match5" value="Heat-2" checked="checked" >Heat-2
+				    	</label>
+						<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match6" value="Rockets+1.5" >Rockets Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match6" value="Mavericks-1.5" checked="checked" >Mavericks-1.5
+				    	</label>
+				    	<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match7" value="Lakers+8.5" >Lakers Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match7" value="Jazz-8.5" checked="checked" >Jazz-8.5
+				    	</label>
+				    	<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match8" value="Warriors-11" >Warriors Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match8" value="Pelicans+11" checked="checked" >Pelicans+11
+				    	</label>
 				    	
 						
 						<hr>
