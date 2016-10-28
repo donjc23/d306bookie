@@ -67,8 +67,8 @@ module.exports = function(app, passport){
 	
 	app.get('/profile', isLoggedIn, function(req, res){
 		var user = req.user;
-		var picks = [];
-		var allPicks = user.allPicks;
+		var picks,allPicks = [];
+		allPicks = user.allPicks;
 		var today = new Date();
 		var estday = moment(today).format('ha z');
 		var tday = moment(today).day();
