@@ -87,7 +87,7 @@ module.exports = function(app, passport){
 			var date = lastPick.dayPick;
 			//var day = date.getDay();
 			var day = moment(date).day();
-			if(day < tday){
+			if(day != tday){
 				nextDay = true;
 			}
 			if (day == tday){
