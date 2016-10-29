@@ -79,6 +79,7 @@ module.exports = function(app, passport){
 		var tday = moment(today).day();
 		var hour = moment(today).hour();
 		var sevenOclock = false;
+		var nextDay = false;
 		if(hour > 18)
 			sevenOclock = true;
 		var lastPick = user.allPicks.pop();
@@ -86,13 +87,16 @@ module.exports = function(app, passport){
 			var date = lastPick.dayPick;
 			//var day = date.getDay();
 			var day = moment(date).day();
+			if(day < tday){
+				nextDay = true;
+			}
 			if (day == tday){
 				picks = lastPick.dayPicks;
 			}else{
 				picks = [];
 			}
 		}
-		res.render('profile.ejs', {allPicks : allPicks, picks: picks, day: estday, name: user.local.username, sevenOclock: sevenOclock});
+		res.render('profile.ejs', {allPicks : allPicks, picks: picks, day: estday, name: user.local.username, sevenOclock: sevenOclock, nextDay: nextDay});
 	});
 	
 	app.post('/score', function(req, res){

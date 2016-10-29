@@ -62,7 +62,7 @@
             <div class="well">
                 <h3><span class="fa fa-user"></span> Time is <%= day %></h3>
 
-                <% if (picks.length==0 && sevenOclock==false) { %>
+                <% if (picks.length==0 && sevenOclock==false && nextDay==false) { %>
                 	<form action="/profile" method="post">
 
 	    				<h1>todays matches</h1>
@@ -144,7 +144,9 @@
    							<li><%= picks[i] %></li>
 						<% } %>
 					</ul>
-				<% } else { %>
+				<% } else if(nextDay==true){ %>
+					<h4> New Day, update soon! </h4>
+			    <% else { %>
              		<h4> Sorry buddy, you missed boat today! </h4>
              <% } %>
 
