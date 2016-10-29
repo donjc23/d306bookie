@@ -42,8 +42,8 @@
 					  <% for(var i=0; i<allPicks.length; i++) {%>
 					  		<tr>
 					  			<td><%= i+1 %></td>
-						  		<% for(var j=0; j<allPicks[i].dayPicks.length; j++) {%>
-						  			<td><%= allPicks[i].dayPicks[j] %></td>
+						  		<% for(var j=0; j<allPicks[i].length; j++) {%>
+						  			<td><%= allPicks[i][j] %></td>
 						  		<% } %>
 					  			
 					  		</tr>
@@ -66,63 +66,71 @@
                 	<form action="/profile" method="post">
 
 	    				<h1>todays matches</h1>
-
+	    				
 						<label class="radio-inline">
-				      	<input type="radio" name="match1" value="Cavaliers-3" >Cavaliers Vs
+				      	<input type="radio" name="match1" value="Hawks-7.5" >Hawks Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match1" value="Raptors+3" checked="checked" >Raptors+3
-				    	</label>
-						<hr>
-						<label class="radio-inline">
-				      	<input type="radio" name="match2" value="Pacers-6.5" >Pacers Vs
-				    	</label>
-				    	<label class="radio-inline">
-				      	<input type="radio" name="match2" value="Nets+6.5" checked="checked" >Nets+6.5
-				    	</label>
-						<hr>
-						<label class="radio-inline">
-				      	<input type="radio" name="match3" value="Magic+3.5" >Magic Vs
-				    	</label>
-				    	<label class="radio-inline">
-				      	<input type="radio" name="match3" value="Pistons-3.5" checked="checked" >Pistons-3.5
+				      	<input type="radio" name="match1" value="76ers+7.5" checked="checked" >76ers+7.5
 				    	</label>
 				    	<hr>
 						<label class="radio-inline">
-				      	<input type="radio" name="match4" value="Suns+9.5" >Suns Vs
+				      	<input type="radio" name="match2" value="Celtics-2" >Celtics Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match4" value="Thunder-9.5" checked="checked" >Thunder-9.5
-				    	</label>
-						<hr>
-						<label class="radio-inline">
-				      	<input type="radio" name="match5" value="Hornets+2" >Hornets Vs
-				    	</label>
-				    	<label class="radio-inline">
-				      	<input type="radio" name="match5" value="Heat-2" checked="checked" >Heat-2
-				    	</label>
-						<hr>
-						<label class="radio-inline">
-				      	<input type="radio" name="match6" value="Rockets+1.5" >Rockets Vs
-				    	</label>
-				    	<label class="radio-inline">
-				      	<input type="radio" name="match6" value="Mavericks-1.5" checked="checked" >Mavericks-1.5
+				      	<input type="radio" name="match2" value="Hornets+2" checked="checked" >Hornets+2
 				    	</label>
 				    	<hr>
 						<label class="radio-inline">
-				      	<input type="radio" name="match7" value="Lakers+8.5" >Lakers Vs
+				      	<input type="radio" name="match3" value="Grizzlies+2" >Grizzlies Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match7" value="Jazz-8.5" checked="checked" >Jazz-8.5
+				      	<input type="radio" name="match3" value="Knicks-2" checked="checked" >Knicks-2
 				    	</label>
 				    	<hr>
 						<label class="radio-inline">
-				      	<input type="radio" name="match8" value="Warriors-11" >Warriors Vs
+				      	<input type="radio" name="match4" value="Magic+12" >Magic Vs
 				    	</label>
 				    	<label class="radio-inline">
-				      	<input type="radio" name="match8" value="Pelicans+11" checked="checked" >Pelicans+11
+				      	<input type="radio" name="match4" value="Cavaliers-12" checked="checked" >Cavaliers-12
 				    	</label>
-				    	
+						<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match5" value="Pacers+3" >Pacers Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match5" value="Bulls-3" checked="checked" >Bulls-3
+				    	</label>
+						<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match6" value="Nets+6.5" >Nets Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match6" value="Bucks-6.5" checked="checked" >Bucks-6.5
+				    	</label>
+				    	<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match7" value="Pelicans+14" >Pelicans Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match7" value="Spurs-14" checked="checked" >Spurs-14
+				    	</label>
+						<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match8" value="Trail Blazers+2" >Trail Blazers Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match8" value="Nuggets-2" checked="checked" >Nuggets-2
+				    	</label>
+						<hr>
+						<label class="radio-inline">
+				      	<input type="radio" name="match9" value="Timberwolves+1.5" >Timberwolves Vs
+				    	</label>
+				    	<label class="radio-inline">
+				      	<input type="radio" name="match9" value="Kings-1.5" checked="checked" >Kings-1.5
+				    	</label>
+				    	<hr>
+						
 						
 						<hr>
 					    <button type="submit" class="btn btn-warning btn-lg">Pick'em</button>
