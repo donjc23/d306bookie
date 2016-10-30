@@ -80,18 +80,21 @@ module.exports = function(app, passport){
 		var hour = moment(today).hour();
 		var sevenOclock = false;
 		var nextDay = false;
-		if(hour > 15) //18  
+		if(hour > 15) //18
 			sevenOclock = true;
 		var lastPick = user.allPicks.pop();
 		if(lastPick){
 			var date = lastPick.dayPick;
 			//var day = date.getDay();
 			var day = moment(date).day();
+			if(day != tday){
+				nextDay = true;
+			}
 			if (day == tday){
 				picks = lastPick.dayPicks;
 			}else{
 				picks = [];
-				if(hour < 11){
+				if(hour < 10){
 					nextDay = true;
 				}
 			}
@@ -188,7 +191,7 @@ module.exports = function(app, passport){
 		picks.push(req.body.match5);
 		picks.push(req.body.match6);
 		picks.push(req.body.match7);
-		
+	
 	
 		today.dayPick = new Date();
 		today.dayPicks = picks;
