@@ -11,14 +11,16 @@ module.exports = function(app, passport){
 		// var tday = today.getDay();
 		// var hour = today.getHours();
 		var sevenOclock = false;
-		if(hour > 15) //18
+		if(hour > 18) //18  //15
 			sevenOclock = true;
 		User.find(function(err, users){
 			if(err)
 				throw err;
 			for(var i=0; i<users.length; i++) {
 				var stuff = {};
-				var yesterday = users[i].allPicks.pop();
+				var temp = [];
+				temp = users[i].allPicks;
+				var yesterday = temp[temp.length - 1];
 				if(yesterday){
 					var date = yesterday.dayPick;
 					var day = moment(date).day();
@@ -80,16 +82,13 @@ module.exports = function(app, passport){
 		var hour = moment(today).hour();
 		var sevenOclock = false;
 		var nextDay = false;
-		if(hour > 15) //18
+		if(hour > 18) //18-7pm  //15-4pm
 			sevenOclock = true;
-		var lastPick = user.allPicks.pop();
+		var lastPick = temp[temp.length - 1];
 		if(lastPick){
 			var date = lastPick.dayPick;
 			//var day = date.getDay();
 			var day = moment(date).day();
-			if(day != tday){
-				nextDay = true;
-			}
 			if (day == tday){
 				picks = lastPick.dayPicks;
 			}else{
@@ -103,23 +102,26 @@ module.exports = function(app, passport){
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Hawks-7.5','Celtics-2','Knicks-2','Magic+12','Bulls-3','Nets+6.5','Spurs-14','Trail Blazers+2','Kings-1.5'];
+		var result = ['Clippers-7.5','Suns+11.5','pushed','Pistons-7.5','Thunder-8','Grizzlies+2.5','Mavericks+5.5'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();
-		//var tday = today.getDay();	
+		//console.log('tday is ' + tday);	
 		User.find(function(err, users){
 			if(err)
 				throw err;
 			for(var i=0; i<users.length; i++) {
 				var todayscore = 0;
-				var yesterday = users[i].allPicks.pop();
+				var temp = [];
+				temp = users[i].allPicks;
+				var yesterday = temp[temp.length - 1];
 				if(yesterday){
 					var picks = yesterday.dayPicks;
 					var ysize = picks.length;
 					var date = yesterday.dayPick;
 					var day = moment(date).day();
 					//var day = date.getDay();
+					//console.log('pday is ' + day);
 					if (day < 6 ){
 						if(day == tday-1 && size == ysize){
 							for(var j=0; j<picks.length; j++) {
@@ -188,9 +190,7 @@ module.exports = function(app, passport){
 		picks.push(req.body.match2);
 		picks.push(req.body.match3);
 		picks.push(req.body.match4);
-		picks.push(req.body.match5);
-		picks.push(req.body.match6);
-		picks.push(req.body.match7);
+		
 	
 	
 		today.dayPick = new Date();
