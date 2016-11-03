@@ -102,7 +102,7 @@ module.exports = function(app, passport){
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Rockets+9','76ers+5','Lakers+9','Heat-3.5','Pistons-4','Bucks+3','Timberwolves-5.5','Jazz+10.5','Warriors-5'];
+		var result = ['Raptors-1','Hornets-12','Nets+4.5','Rockets+1.5','Lakers+11.5','Grizzlies-5.5','Celtics-3.5','Jazz-4.5','Suns+3.5','Thunder+7'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();
@@ -191,11 +191,7 @@ module.exports = function(app, passport){
 		picks.push(req.body.match3);
 		picks.push(req.body.match4);
 		picks.push(req.body.match5);
-		picks.push(req.body.match6);
-		picks.push(req.body.match7);
-		picks.push(req.body.match8);
-		picks.push(req.body.match9);
-		picks.push(req.body.match10);
+		
 	
 		today.dayPick = new Date();
 		today.dayPicks = picks;
