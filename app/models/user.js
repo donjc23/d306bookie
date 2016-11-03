@@ -12,7 +12,8 @@ var userSchema = mongoose.Schema({
 		}
 	],
 	score : { type: Number, default: 0 },
-	daywins : { type: Number, default: 0 }
+	daywins : { type: Number, default: 0 },
+	games : { type: Number, default: 0 }
 });
 
 userSchema.methods.generateHash = function(password){

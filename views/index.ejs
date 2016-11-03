@@ -64,6 +64,7 @@
 					    <th>name</th>
 					    <th>score</th>
 					    <th># of wins</th>
+					    <th># of games</th>
 					    <th>picks...</th>
 					  </tr>
 					  <% for(var i=0; i<all.length; i++) {%>
@@ -71,6 +72,7 @@
 					  			<td><%= all[i].name %></td>
 					  			<td><%= all[i].score %></td>
 					  			<td><%= all[i].daywins %></td>
+					  			<td><%= all[i].games %></td>
 					  			<% if (sevenOclock == true) { %>
 						  			<% for(var j=0; j<all[i].picks.length; j++) {%>
 						  				<td><%= all[i].picks[j] %></td>

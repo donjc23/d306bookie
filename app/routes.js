@@ -28,6 +28,7 @@ module.exports = function(app, passport){
 					stuff.name = users[i].local.username;
 					stuff.score = users[i].score;
 					stuff.daywins = users[i].daywins;
+					stuff.games = users[i].games;
 					if (day == tday){
 						stuff.picks = yesterday.dayPicks;
 					}else{
@@ -37,6 +38,7 @@ module.exports = function(app, passport){
 					stuff.name = users[i].local.username;
 					stuff.score = users[i].score;
 					stuff.daywins = users[i].daywins;
+					stuff.games = users[i].games;
 					stuff.picks = [];
 				}
 				all.push(stuff);
@@ -134,6 +136,7 @@ module.exports = function(app, passport){
 							//console.log('newscore ' + newscore);
 							users[i].score = newscore;
 							users[i].daywins = todayscore;
+							users[i].games = users[i].games + picks.length;
 							users[i].save(function(err){
 								if(err)
 									throw err;
@@ -149,6 +152,7 @@ module.exports = function(app, passport){
 							var newscore = users[i].score + todayscore;
 							users[i].score = newscore;
 							users[i].daywins = todayscore;
+							users[i].games = users[i].games + picks.length;
 							users[i].save(function(err){
 								if(err)
 									throw err;
