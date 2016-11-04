@@ -38,7 +38,7 @@ module.exports = function(app, passport){
 					stuff.name = users[i].local.username;
 					stuff.score = users[i].score;
 					stuff.daywins = users[i].daywins;
-					stuff.games = users[i].games;
+					stuff.games = users[i].games; 
 					stuff.picks = [];
 				}
 				all.push(stuff);
@@ -104,7 +104,7 @@ module.exports = function(app, passport){
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Raptors-1','Hornets-12','Nets+4.5','Rockets+1.5','Lakers+11.5','Grizzlies-5.5','Celtics-3.5','Jazz-4.5','Suns+3.5','Thunder+7'];
+		var result = ['Magic-1','Bucks+2.5','Nuggets+3.5','Celtics+9','Warriors-11'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();
@@ -136,7 +136,7 @@ module.exports = function(app, passport){
 							//console.log('newscore ' + newscore);
 							users[i].score = newscore;
 							users[i].daywins = todayscore;
-							users[i].games = users[i].games + picks.length;
+							users[i].games = users[i].games + picks.length; //61-64
 							users[i].save(function(err){
 								if(err)
 									throw err;
@@ -195,7 +195,10 @@ module.exports = function(app, passport){
 		picks.push(req.body.match3);
 		picks.push(req.body.match4);
 		picks.push(req.body.match5);
-		
+		picks.push(req.body.match6);
+		picks.push(req.body.match7);
+		picks.push(req.body.match8);
+		picks.push(req.body.match9);
 	
 		today.dayPick = new Date();
 		today.dayPicks = picks;
