@@ -11,7 +11,7 @@ module.exports = function(app, passport){
 		// var tday = today.getDay();
 		// var hour = today.getHours();
 		var sevenOclock = false;
-		if(hour > 17) //18  //15
+		if(hour > 11) //18  //15
 			sevenOclock = true;
 		User.find(function(err, users){
 			if(err)
@@ -84,7 +84,7 @@ module.exports = function(app, passport){
 		var hour = moment(today).hour();
 		var sevenOclock = false;
 		var nextDay = false;
-		if(hour > 17) //18-7pm  //15-4pm
+		if(hour > 11) //18-7pm  //15-4pm
 			sevenOclock = true;
 		var lastPick = temp[temp.length - 1];
 		if(lastPick){
@@ -95,7 +95,7 @@ module.exports = function(app, passport){
 				picks = lastPick.dayPicks;
 			}else{
 				picks = [];
-				if(hour < 11){
+				if(hour < 10){
 					nextDay = true;
 				}
 			}
@@ -104,7 +104,7 @@ module.exports = function(app, passport){
 	});
 	
 	app.post('/score', function(req, res){
-		var result = ['Wizards-2','Raptors-7.5','Nets+6.5','Knicks+6.5','Clippers-5.5','Suns+3.5','Trail Blazers-1.5','Spurs-4','Lakers+11'];
+		var result = ['Thunder-5.5','76ers+13.5','Wizards+5','Pistons-4.5','Pacers-3','Hawks-2.5','Bucks-1.5','Clippers+4'];
 		var size = result.length;
 		var today = new Date();
 		var tday = moment(today).day();
@@ -196,9 +196,8 @@ module.exports = function(app, passport){
 		picks.push(req.body.match4);
 		picks.push(req.body.match5);
 		picks.push(req.body.match6);
-		picks.push(req.body.match7);
-		picks.push(req.body.match8);
-	
+		
+		
 		today.dayPick = new Date();
 		today.dayPicks = picks;
 		user.allPicks.push(today);
