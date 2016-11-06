@@ -95,7 +95,7 @@ module.exports = function(app, passport){
 				picks = lastPick.dayPicks;
 			}else{
 				picks = [];
-				if(hour < 10){
+				if(hour < 9){
 					nextDay = true;
 				}
 			}
